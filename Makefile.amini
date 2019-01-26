@@ -1,0 +1,10 @@
+CC = /opt/pap-toolchain/bin/mipsel-linux-gcc
+CFLAGS = -fPIC -O2 -fdata-sections -ffunction-sections -Wl,--as-needed -Wl,--gc-sections -s
+
+all: sdlfix_amini.so
+
+sdlfix_amini.so: sdl_scaler_arcademini.o
+	$(CC) -shared $(CFLAGS) -o $@ $<
+
+clean:
+	$(RM) sdlfix_amini.so sdl_scaler_arcademini.o

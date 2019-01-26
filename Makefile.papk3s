@@ -1,0 +1,10 @@
+CC = /opt/pap-toolchain/bin/mipsel-linux-gcc
+CFLAGS = -fPIC -O2 -fdata-sections -ffunction-sections -Wl,--as-needed -Wl,--gc-sections -s
+
+all: sdlfix_papk3s.so
+
+sdlfix_papk3s.so: sdl_scaler_papk3s.o
+	$(CC) -shared $(CFLAGS) -o $@ $<
+
+clean:
+	$(RM) sdlfix_papk3s.so sdl_scaler_papk3s.o
